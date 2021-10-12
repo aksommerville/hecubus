@@ -308,18 +308,169 @@ static void draw_dice() {
 }
 
 /* Countdown mode.
+ * TODO The timer stops updating when you move to another page.
+ * Can we keep it alive in the background? Seems doable?
  ***************************************************************/
+ 
+#define CD_ALERT_TIME 180 /* 1/60 s */
+#define CD_ALERT_PERIOD 10 /* frames; half-period to be exact */
+ 
+static uint32_t cd_end_time=0; // nonzero = absolute expiry time in ms
+static uint16_t cd_alert_time=0; // frames
+static struct { uint8_t min,sec; } cd_remaining={0};
+static uint8_t cd_editv[4]={0}; // min*10,min,sec*10,sec
+static uint8_t cd_editp=0; // 0..3
+
+static void countdown_start() {
+  uint32_t ms=(cd_editv[0]*600+cd_editv[1]*60+cd_editv[2]*10+cd_editv[3])*1000;
+  if (ms<1000) return;
+  cd_end_time=millis()+ms;
+  cd_alert_time=0;
+  cd_remaining.min=ms/60000;
+  cd_remaining.sec=(ms/1000)%60;
+  video_dirty=1;
+}
+
+static void countdown_cancel() {
+  cd_end_time=0;
+  cd_alert_time=0;
+  video_dirty=1;
+}
 
 static void handle_input_countdown(uint8_t pressed,uint8_t aux) {
-//TODO
+
+  // B returns to the menu.
+  if (pressed&TINYC_BUTTON_B) {
+    focus_mode_select=1;
+    video_dirty=1;
+    return;
+  }
+  
+  // Up/Down while in the menu: unfocus menu.
+  if (aux&&(pressed&(TINYC_BUTTON_UP|TINYC_BUTTON_DOWN))) {
+    focus_mode_select=0;
+    video_dirty=1;
+    return;
+  }
+
+  // A cancels the timer if running, or starts if stopped.
+  if (pressed&TINYC_BUTTON_A) {
+    if (cd_end_time) countdown_cancel();
+    else countdown_start();
+    return;
+  }
+  
+  if (aux) return;
+
+  // Left/right: cd_editp
+  if (pressed&TINYC_BUTTON_LEFT) {
+    if (cd_editp) cd_editp--;
+    else cd_editp=3;
+    video_dirty=1;
+  } else if (pressed&TINYC_BUTTON_RIGHT) {
+    if (cd_editp<3) cd_editp++;
+    else cd_editp=0;
+    video_dirty=1;
+  }
+  
+  // Up/down: edit focused digit, if not running
+  if (!cd_end_time&&!cd_alert_time) {
+    uint8_t *dst=cd_editv+cd_editp;
+    if (pressed&TINYC_BUTTON_UP) {
+      if (*dst>=9) *dst=0;
+      else (*dst)++;
+      if ((cd_editp==2)&&(*dst>5)) *dst=0;
+      video_dirty=1;
+    } else if (pressed&TINYC_BUTTON_DOWN) {
+      if (!*dst) *dst=9;
+      else (*dst)--;
+      if ((cd_editp==2)&&(*dst>5)) *dst=5;
+      video_dirty=1;
+    }
+  }
+}
+
+static void countdown_expire() {
+  //TODO sound effects
+  cd_end_time=0;
+  cd_alert_time=CD_ALERT_TIME;
+  video_dirty=1;
+}
+
+static void countdown_end_alert() {
+  cd_alert_time=0;
+  video_dirty=1;
 }
 
 static void countdown_update() {
-//TODO
+  if (cd_end_time) {
+    uint32_t now=millis();
+    if (now>=cd_end_time) {
+      countdown_expire();
+    } else {
+      // Should tick about 1 in 60 frames, so it's worth checking whether something changed.
+      uint32_t remaining=cd_end_time-now;
+      uint8_t min=remaining/60000;
+      uint8_t sec=(remaining/1000)%60;
+      if ((min!=cd_remaining.min)||(sec!=cd_remaining.sec)) {
+        cd_remaining.min=min;
+        cd_remaining.sec=sec;
+        video_dirty=1;
+      }
+    }
+  } else if (cd_alert_time>0) {
+    cd_alert_time--;
+    if (!cd_alert_time) countdown_end_alert();
+    else if (cd_alert_time%CD_ALERT_PERIOD==CD_ALERT_PERIOD-1) video_dirty=1;
+  }
 }
 
 static void draw_countdown() {
-//TODO
+  
+  // Timer running...
+  if (cd_end_time) {
+    softarcade_fill_rect(&image_fb,0,11,96,53,0x20);
+    uint8_t colw=fancydigitv[0].w;
+    int8_t x=30,y=27;
+    dice_draw_digit(x,y,cd_remaining.min/10); x+=colw;
+    dice_draw_digit(x,y,cd_remaining.min%10); x+=colw;
+    softarcade_fill_rect(&image_fb,x,y+4,2,2,0xff);
+    softarcade_fill_rect(&image_fb,x,y+8,2,2,0xff);
+    x+=3;
+    dice_draw_digit(x,y,cd_remaining.sec/10); x+=colw;
+    dice_draw_digit(x,y,cd_remaining.sec%10);
+    
+  // Flash due to expiry.
+  } else if (cd_alert_time) {
+    uint8_t bgcolor,fgcolor;
+    if ((cd_alert_time/CD_ALERT_PERIOD)&1) {
+      bgcolor=0x03;
+      fgcolor=0xff;
+    } else {
+      bgcolor=0x1f;
+      fgcolor=0x00;
+    }
+    softarcade_fill_rect(&image_fb,0,11,96,53,bgcolor);
+    softarcade_font_render(&image_fb,20,30,&font,"Time up!",8,fgcolor);
+    
+  // Collect input.
+  } else {
+    uint8_t colw=fancydigitv[0].w;
+    uint8_t rowh=fancydigitv[0].h;
+    int8_t x=30,y=27;
+    #define DIGIT(n) { \
+      if (!focus_mode_select&&(cd_editp==n)) softarcade_fill_rect(&image_fb,x-1,y-1,colw+1,rowh+2,0x70); \
+      dice_draw_digit(x,y,cd_editv[n]); x+=colw; \
+    }
+    DIGIT(0)
+    DIGIT(1)
+    softarcade_fill_rect(&image_fb,x,y+4,2,2,0xff);
+    softarcade_fill_rect(&image_fb,x,y+8,2,2,0xff);
+    x+=3;
+    DIGIT(2)
+    DIGIT(3)
+    #undef DIGIT
+  }
 }
 
 /* Stopwatch mode.

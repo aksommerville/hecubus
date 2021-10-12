@@ -10,6 +10,11 @@ The dungeon master's helper, for TinyArcade. [https://tinycircuits.com/].
 - Stopwatch
 - Stats record
 
+## TODO
+
+-[ ] Sound for countdown.
+-[ ] Run countdown while other pages focussed.
+
 ## Requirements
 
 - Arduino IDE 1.8.16.
