@@ -72,19 +72,45 @@ static struct softarcade_image tilev[16]={0};
 static uint8_t tilew=8,tileh=8;
 
 SOFTARCADE_IMAGE_DECLARE(fancydigits,80,13,
-  28,28,255,255,255,28,28,28,28,28,28,28,255,28,28,28,28,255,255,255,255,28,28,28,28,255,255,255,255,28,28,28,255,255,28,28,28,255,255,28,255,255,255,255,255,255,255,28,28,28,255,255,255,255,28,28,255,255,255,255,255,255,255,28,28,28,255,255,255,28,28,28,28,28,255,255,255,255,28,28,
-  28,255,28,28,28,255,28,28,28,28,28,255,255,28,28,28,255,255,28,28,255,255,28,28,255,255,28,28,255,255,28,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,28,255,255,28,28,255,255,28,255,255,28,28,28,255,255,28,28,255,255,28,255,255,28,28,28,255,255,28,28,255,255,28,
-  255,255,28,28,28,255,255,28,28,28,255,255,255,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,
-  255,255,28,28,28,255,255,28,28,255,255,255,255,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,
-  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,255,255,28,28,255,255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,
-  255,255,28,28,255,255,255,28,28,28,28,255,255,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,255,255,28,
-  255,255,28,255,28,255,255,28,28,28,28,255,255,28,28,28,28,28,255,255,255,255,28,28,28,28,255,255,255,255,28,28,255,255,255,255,255,255,255,28,255,255,255,255,255,255,28,28,255,255,255,255,255,255,28,28,28,28,28,28,255,255,28,28,28,28,255,255,255,28,28,28,28,28,255,255,255,255,255,28,
-  255,255,255,28,28,255,255,28,28,28,28,255,255,28,28,28,28,255,255,255,255,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,255,255,255,28,28,28,28,255,255,28,28,28,28,255,255,28,255,255,28,28,28,28,28,28,28,255,255,28,
-  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,255,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,255,255,28,
-  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,255,255,28,
-  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,255,255,28,
-  28,255,28,28,28,255,28,28,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,255,255,28,28,28,28,28,28,28,255,255,28,255,255,28,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,255,255,28,28,28,28,255,255,28,255,255,28,28,28,28,28,28,28,255,255,28,
-  28,28,255,255,255,28,28,28,28,255,255,255,255,255,255,28,255,255,255,255,255,255,255,28,28,255,255,255,255,28,28,28,28,28,28,28,28,255,255,28,28,255,255,255,255,28,28,28,28,28,255,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,255,255,255,28,28,28,28,28,28,28,28,255,255,28,
+  28,28,255,255,255,28,28,28,28,28,28,28,255,28,28,28,28,255,255,255,255,28,28,28,28,255,255,255,255,28,28,28,
+  255,255,28,28,28,255,255,28,255,255,255,255,255,255,255,28,28,28,255,255,255,255,28,28,255,255,255,255,255,255,
+  255,28,28,28,255,255,255,28,28,28,28,28,255,255,255,255,28,28,
+  28,255,28,28,28,255,28,28,28,28,28,255,255,28,28,28,255,255,28,28,255,255,28,28,255,255,28,28,255,255,28,28,
+  255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,28,255,255,28,28,255,255,28,255,255,28,28,28,255,255,28,
+  28,255,255,28,255,255,28,28,28,255,255,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,28,28,255,255,255,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,255,28,28,28,28,28,28,255,255,28,255,
+  255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,28,255,255,255,255,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,28,255,255,28,255,
+  255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,255,255,28,28,255,
+  255,28,28,28,255,255,28,255,255,28,28,28,255,255,28,
+  255,255,28,28,255,255,255,28,28,28,28,255,255,28,28,28,28,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,
+  255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,
+  255,255,28,255,255,28,28,28,255,255,28,28,255,255,28,
+  255,255,28,255,28,255,255,28,28,28,28,255,255,28,28,28,28,28,255,255,255,255,28,28,28,28,255,255,255,255,28,
+  28,255,255,255,255,255,255,255,28,255,255,255,255,255,255,28,28,255,255,255,255,255,255,28,28,28,28,28,28,255,
+  255,28,28,28,28,255,255,255,28,28,28,28,28,255,255,255,255,255,28,
+  255,255,255,28,28,255,255,28,28,28,28,255,255,28,28,28,28,255,255,255,255,28,28,28,28,28,28,28,255,255,28,28,28,28,
+  28,28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,255,255,255,28,28,28,28,255,255,28,28,28,28,255,255,28,
+  255,255,28,28,28,28,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,255,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,28,
+  28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,
+  255,255,28,28,28,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,28,
+  28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,
+  255,255,28,28,28,28,28,28,255,255,28,
+  255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,28,28,28,28,28,255,255,28,28,28,28,
+  28,28,255,255,28,28,28,28,28,28,255,255,28,255,255,28,28,28,255,255,28,28,28,28,255,255,28,28,28,255,255,28,28,28,
+  255,255,28,28,28,28,28,28,255,255,28,
+  28,255,28,28,28,255,28,28,28,28,28,255,255,28,28,28,255,255,28,28,28,28,28,28,255,255,28,28,255,255,28,28,28,28,28,
+  28,28,255,255,28,255,255,28,28,255,255,28,28,28,255,255,28,255,255,28,28,28,28,28,255,255,28,28,28,28,255,255,28,255,
+  255,28,28,28,28,28,28,28,255,255,28,
+  28,28,255,255,255,28,28,28,28,255,255,255,255,255,255,28,255,255,255,255,255,255,255,28,28,255,255,255,255,28,28,28,
+  28,28,28,28,28,255,255,28,28,255,255,255,255,28,28,28,28,28,255,255,255,28,28,28,28,28,28,255,255,28,28,28,28,28,255,
+  255,255,28,28,28,28,28,28,28,28,255,255,28,
 )
 static struct softarcade_image fancydigitv[10]={0};
 
@@ -595,17 +621,430 @@ static void draw_stopwatch() {
 
 /* Statistics mode.
  **************************************************************/
+ 
+#define ST_COLC 4
+#define ST_ROWC 8
+#define ST_COLW (96/ST_COLC)
+#define ST_ROWH (53/ST_ROWC)
+#define ST_CONTENT_LIMIT 8 /* max size of cell content in chars */
+#define ST_KEY_LABEL_LIMIT 4
+#define ST_STORAGE_LIMIT (9*ST_COLC*ST_ROWC) /* 216 bytes */
+#define ST_SAVE_PATH "/Hecubus/stats.csv"
+
+static uint8_t st_col=0,st_row=0;
+static uint8_t st_editing=0;
+
+static struct st_cell {
+  char content[ST_CONTENT_LIMIT];
+  uint8_t contentc;
+  char backup[ST_CONTENT_LIMIT];
+  uint8_t backupc;
+} st_cellv[ST_COLC*ST_ROWC]={0};
+
+static struct st_key {
+  char label[ST_KEY_LABEL_LIMIT];
+  uint8_t labelc;
+  uint8_t bgcolor;
+} st_keyv[16]={
+#define _(lbl,c) {lbl,sizeof(lbl)-1,c},
+  _("7",0xb6)
+  _("8",0xb6)
+  _("9",0xb6)
+  _("*",0xed)
+  _("4",0xb6)
+  _("5",0xb6)
+  _("6",0xb6)
+  _("-",0xed)
+  _("1",0xb6)
+  _("2",0xb6)
+  _("3",0xb6)
+  _("+",0xed)
+  _("0",0xb6)
+  _("<<",0x4f)
+  _("X",0x03)
+  _("OK",0x1c)
+#undef _
+};
+
+static uint8_t st_keyp=0; // 0..15
+static char st_edit_input[ST_CONTENT_LIMIT];
+static uint8_t st_edit_inputc=0;
+static char st_edit_output[ST_CONTENT_LIMIT];
+static uint8_t st_edit_outputc=0;
+
+static void st_load() {
+  char src[ST_STORAGE_LIMIT];
+  int32_t srcc=tinyc_file_read(src,sizeof(src),ST_SAVE_PATH);
+  if ((srcc>0)&&(srcc<=sizeof(src))) {
+    uint8_t srcp=0,col=0,row=0;
+    while (srcp<srcc) {
+    
+      const char *content=src+srcp;
+      uint8_t contentc=0;
+      while ((srcp<srcc)&&(src[srcp]!=',')&&(src[srcp]!=0x0a)) { srcp++; contentc++; }
+      if ((col<ST_COLC)&&(row<ST_ROWC)) {
+        struct st_cell *cell=st_cellv+row*ST_COLC+col;
+        while (contentc&&((uint8_t)content[0]<=0x20)) { contentc--; content++; }
+        if (contentc>ST_CONTENT_LIMIT) contentc=ST_CONTENT_LIMIT;
+        while (contentc&&((uint8_t)content[contentc-1]<=0x20)) contentc--;
+        memcpy(cell->content,content,contentc);
+        cell->contentc=contentc;
+      }
+      
+      if (src[srcp]==0x0a) {
+        srcp++;
+        col=0;
+        row++;
+        if (row>=ST_ROWC) return; // no sense reading the rest, if there is any
+      } else if (src[srcp]==',') {
+        srcp++;
+        col++;
+      }
+    }
+  }
+}
+
+static void st_save() {
+  char src[ST_STORAGE_LIMIT];
+  uint8_t srcc=0;
+  const struct st_cell *cell=st_cellv;
+  int8_t yi=ST_ROWC;
+  for (;yi-->0;) {
+    int8_t xi=ST_COLC;
+    for (;xi-->0;cell++) {
+      memcpy(src+srcc,cell->content,cell->contentc);
+      srcc+=cell->contentc;
+      src[srcc++]=',';
+    }
+    src[srcc-1]=0x0a; // turn that last comma into a linefeed
+  }
+  tinyc_file_write(ST_SAVE_PATH,src,srcc);
+}
+
+// Clear cell or restore cleared content.
+static void st_clear_cell(uint8_t col,uint8_t row,uint8_t persist) {
+  if (col>=ST_COLC) return;
+  if (row>=ST_ROWC) return;
+  struct st_cell *cell=st_cellv+row*ST_COLC+col;
+  if (cell->contentc) {
+    memcpy(cell->backup,cell->content,cell->contentc);
+    cell->backupc=cell->contentc;
+    cell->contentc=0;
+  } else if (cell->backupc) {
+    memcpy(cell->content,cell->backup,cell->backupc);
+    cell->contentc=cell->backupc;
+  } else return;
+  video_dirty=1;
+  if (persist) st_save();
+}
+
+static void st_clear_all() {
+  uint8_t row=0; for (;row<ST_ROWC;row++) {
+    uint8_t col=0; for (;col<ST_COLC;col++) {
+      st_clear_cell(col,row,0);
+    }
+  }
+  st_save();
+}
+
+// Evaluate a signed decimal integer, return length consumed or zero on error.
+static uint8_t st_edit_eval_literal(int32_t *dst,const char *src,uint8_t srcc) {
+  *dst=0;
+  uint8_t positive=1,srcp=0,digitc=0;
+  if (srcp>=srcc) return 0;
+  if (src[srcp]=='-') {
+    positive=0;
+    if (++srcp>=srcc) return 0;
+  } else if (src[srcp]=='+') {
+    if (++srcp>=srcc) return 0;
+  }
+  while ((srcp<srcc)&&(src[srcp]>='0')&&(src[srcp]<='9')) {
+    uint8_t digit=src[srcp++]-'0';
+    // Not checking for overflow; inputs are limited to 8 decimal digits.
+    (*dst)*=10;
+    if (positive) (*dst)+=digit;
+    else (*dst)-=digit;
+    digitc++;
+  }
+  if (!digitc) return 0;
+  return srcp;
+}
+
+// Evaluate some combined expression into st_edit_output, or put an appropriate error message there.
+// I'm not going to respect any order of operations: Left to right, as we encounter things.
+static void st_edit_eval(const char *src,uint8_t srcc) {
+  #define SYNTAX_ERROR { \
+    memcpy(st_edit_output,"STX ERR",7); \
+    st_edit_outputc=7; \
+    return; \
+  }
+  #define OVERFLOW_ERROR { \
+    memcpy(st_edit_output,"OVR ERR",7); \
+    st_edit_outputc=7; \
+    return; \
+  }
+  int32_t acc=0;
+  st_edit_outputc=0;
+  uint8_t srcp=st_edit_eval_literal(&acc,src,srcc);
+  if (!srcp) SYNTAX_ERROR
+  while (srcp<srcc) {
+    
+    char operator=src[srcp++];
+    
+    int32_t r;
+    uint8_t rc=st_edit_eval_literal(&r,src+srcp,srcc-srcp);
+    if (!rc) SYNTAX_ERROR
+    srcp+=rc;
+    
+    switch (operator) {
+      case '+': acc+=r; break;
+      case '-': acc-=r; break;
+      case '*': acc*=r; break;
+      default: SYNTAX_ERROR
+    }
+    
+    // Restrict to 6 characters
+    if ((acc<-99999)||(acc>999999)) OVERFLOW_ERROR
+  }
+  
+  st_edit_outputc=snprintf(st_edit_output,sizeof(st_edit_output),"%d",acc);
+  if (st_edit_outputc>=ST_CONTENT_LIMIT) { // sic '>=', snprintf always emits a terminator
+    OVERFLOW_ERROR
+  }
+  #undef SYNTAX_ERROR
+  #undef OVERFLOW_ERROR
+}
+
+static void st_edit_generate_output() {
+  const struct st_cell *cell=st_cellv+st_row*ST_COLC+st_col;
+  
+  // Empty input means keep the prior.
+  if (!st_edit_inputc) {
+    memcpy(st_edit_output,cell->content,cell->contentc);
+    st_edit_outputc=cell->contentc;
+    
+  // If input begins with an operator, combine and evaluate.
+  } else if ((st_edit_input[0]=='+')||(st_edit_input[0]=='-')||(st_edit_input[0]=='*')) {
+    char combined[ST_CONTENT_LIMIT<<1];
+    memcpy(combined,cell->content,cell->contentc);
+    memcpy(combined+cell->contentc,st_edit_input,st_edit_inputc);
+    st_edit_eval(combined,cell->contentc+st_edit_inputc);
+  
+  // Begins with a digit, evaluate input and overwrite prior.
+  } else {
+    st_edit_eval(st_edit_input,st_edit_inputc);
+  }
+}
+
+static void st_edit_cell(uint8_t col,uint8_t row) {
+  st_editing=1;
+  st_keyp=15; // start with "OK" focussed
+  st_edit_inputc=0;
+  st_edit_outputc=0;
+  video_dirty=1;
+  st_edit_generate_output();
+}
+
+static void st_edit_backspace() {
+  if (st_edit_inputc>0) {
+    st_edit_inputc--;
+    video_dirty=1;
+    st_edit_generate_output();
+  }
+}
+
+static void st_edit_append(char ch) {
+  if (st_edit_inputc<sizeof(st_edit_input)) {
+    st_edit_input[st_edit_inputc++]=ch;
+    video_dirty=1;
+    st_edit_generate_output();
+  }
+}
+
+static void st_edit_cancel() {
+  st_editing=0;
+  video_dirty=1;
+}
+
+static void st_edit_commit() {
+  struct st_cell *cell=st_cellv+st_row*ST_COLC+st_col;
+  if ((cell->contentc!=st_edit_outputc)||memcmp(cell->content,st_edit_output,st_edit_outputc)) {
+    memcpy(cell->content,st_edit_output,st_edit_outputc);
+    cell->contentc=st_edit_outputc;
+    st_save();
+  }
+  st_editing=0;
+  video_dirty=1;
+}
+
+static void st_edit_press_key() {
+  switch (st_keyp) {
+    case 13: st_edit_backspace(); break;
+    case 14: st_edit_cancel(); break;
+    case 15: st_edit_commit(); break;
+    default: { // keys 0..12 are literals, append the first character of the label.
+        st_edit_append(st_keyv[st_keyp].label[0]);
+      }
+  }
+}
+
+static void st_edit_adjust(int8_t dx,int8_t dy) {
+  uint8_t col=((st_keyp&3)+dx)&3;
+  uint8_t row=((st_keyp>>2)+dy)&3;
+  uint8_t np=(row<<2)|col;
+  if (np==st_keyp) return;
+  st_keyp=np;
+  video_dirty=1;
+}
 
 static void handle_input_statistics(uint8_t pressed,uint8_t aux) {
-//TODO
+
+  // In (aux), UP/DOWN to focus, or B to clear all.
+  if (aux) {
+    if (pressed&TINYC_BUTTON_DOWN) {
+      focus_mode_select=0;
+      st_row=0;
+      video_dirty=1;
+    } else if (pressed&TINYC_BUTTON_UP) {
+      focus_mode_select=0;
+      st_row=ST_ROWC-1;
+      video_dirty=1;
+    } else if (pressed&TINYC_BUTTON_B) {
+      st_clear_all();
+    }
+    return;
+  }
+  
+  // Everything's different when editing...
+  if (st_editing) {
+         if (pressed&TINYC_BUTTON_DOWN) st_edit_adjust(0,1);
+    else if (pressed&TINYC_BUTTON_UP) st_edit_adjust(0,-1);
+    else if (pressed&TINYC_BUTTON_LEFT) st_edit_adjust(-1,0);
+    else if (pressed&TINYC_BUTTON_RIGHT) st_edit_adjust(1,0);
+    else if (pressed&TINYC_BUTTON_A) st_edit_press_key();
+    else if (pressed&TINYC_BUTTON_B) st_edit_backspace();
+    return;
+  }
+
+  // D-pad to move selection. Vertical OOB relinquishes focus.
+  if (pressed&TINYC_BUTTON_DOWN) {
+    if (st_row==ST_ROWC-1) focus_mode_select=1;
+    else st_row++;
+    video_dirty=1;
+  } else if (pressed&TINYC_BUTTON_UP) {
+    if (st_row==0) focus_mode_select=1;
+    else st_row--;
+    video_dirty=1;
+  }
+  if (pressed&TINYC_BUTTON_LEFT) {
+    if (st_col) st_col--;
+    else st_col=ST_COLC-1;
+    video_dirty=1;
+  } else if (pressed&TINYC_BUTTON_RIGHT) {
+    if (st_col<ST_COLC-1) st_col++;
+    else st_col=0;
+    video_dirty=1;
+  }
+  
+  // B to cancel edit or clear the selected cell.
+  if (pressed&TINYC_BUTTON_B) {
+    st_clear_cell(st_col,st_row,1);
+  }
+  
+  // A to edit the selected cell.
+  if (pressed&TINYC_BUTTON_A) {
+    st_edit_cell(st_col,st_row);
+  }
 }
 
 static void statistics_update() {
-//TODO
+  // Nothing to do here.
+}
+
+static void st_edit_draw() {
+
+  // Blue background.
+  const struct st_cell *cell=st_cellv+st_row*ST_COLC+st_col;
+  softarcade_fill_rect(&image_fb,0,11,96,53,0xe0);
+
+  // Cell name in upper left corner.
+  char cellname[2]={'A'+st_col,'0'+st_row};
+  softarcade_font_render(&image_fb,1,11,&font,cellname,sizeof(cellname),0xff);
+  
+  // Boxes containing virgin prior value, input, and a preview of the output if accepted.
+  softarcade_fill_rect(&image_fb,1,19,42,7,0xda);
+  softarcade_font_render(&image_fb,2,19,&font,cell->content,cell->contentc,0x00);
+  softarcade_fill_rect(&image_fb,1,27,42,7,0xff);
+  softarcade_font_render(&image_fb,2,27,&font,st_edit_input,st_edit_inputc,0x00);
+  softarcade_fill_rect(&image_fb,1,35,42,7,0xde);
+  softarcade_font_render(&image_fb,2,35,&font,st_edit_output,st_edit_outputc,0x00);
+  
+  // 4x4 grid of keys.
+  const int8_t btnsx=44;
+  const int8_t btnsy=12;
+  const int8_t btnw=13;
+  const int8_t btnh=13;
+  const struct st_key *key=st_keyv;
+  int8_t row=0,y=btnsy,p=0;
+  for (;row<4;row++,y+=btnh) {
+    int8_t col=0,x=btnsx;
+    for (;col<4;col++,x+=btnw,key++,p++) {
+      if (p==st_keyp) {
+        softarcade_fill_rect(&image_fb,x-1,y-1,btnw+1,btnh+1,0x1f);
+      }
+      softarcade_fill_rect(&image_fb,x,y,btnw-1,btnh-1,key->bgcolor);
+      uint8_t labelw=softarcade_font_measure(&font,key->label,key->labelc);
+      softarcade_font_render(&image_fb,x+(btnw>>1)-(labelw>>1),y+3,&font,key->label,key->labelc,0x00);
+    }
+  }
 }
 
 static void draw_statistics() {
-//TODO
+
+  if (st_editing) {
+    st_edit_draw();
+    return;
+  }
+
+  // White background, black OOB and light blue grid lines.
+  // Columns fill the screen exactly, so we cheat the rightmost one pixel short.
+  // Rows leave some margin at the bottom, we black it out.
+  softarcade_fill_rect(&image_fb,0,11,96,53,0xff);
+  
+  // If focussed, highlight the selected cell.
+  if (!focus_mode_select) {
+    int8_t x=st_col*ST_COLW;
+    int8_t y=11+st_row*ST_ROWH;
+    int8_t w=ST_COLW;
+    if (st_col==ST_COLC-1) w--;
+    int8_t h=ST_ROWH;
+    softarcade_fill_rect(&image_fb,x,y,w,h,0x1f);
+  }
+  
+  // Grid lines and blackout.
+  softarcade_fill_rect(&image_fb, 0,11,1,53,0xf2);
+  softarcade_fill_rect(&image_fb,24,11,1,53,0xf2);
+  softarcade_fill_rect(&image_fb,48,11,1,53,0xf2);
+  softarcade_fill_rect(&image_fb,72,11,1,53,0xf2);
+  softarcade_fill_rect(&image_fb,95,11,1,53,0xf2);
+  int8_t i;
+  for (i=11;i<64;i+=ST_ROWH) softarcade_fill_rect(&image_fb,0,i,96,1,0xf2);
+  softarcade_fill_rect(&image_fb,0,12+ST_ROWH*ST_ROWC,96,64,0x00);
+  
+  // Render cell content.
+  int8_t y=11,x=0;
+  const struct st_cell *cell=st_cellv;
+  for (i=ST_COLC*ST_ROWC;i-->0;cell++) {
+    if (cell->contentc) {
+      int8_t textw=softarcade_font_measure(&font,cell->content,cell->contentc);
+      softarcade_font_render(&image_fb,x+1+ST_COLW-textw,y,&font,cell->content,cell->contentc,0x00);
+    }
+    x+=ST_COLW;
+    if (x>=96) {
+      x=0;
+      y+=ST_ROWH;
+    }
+  }
 }
 
 /* General input.
@@ -753,6 +1192,7 @@ void setup() {
   
   tinyc_init();
   init_tiles();
+  st_load();
   
   tinyc_init_usb_log();
 }
