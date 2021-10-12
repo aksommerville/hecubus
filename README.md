@@ -1,7 +1,7 @@
 # Hecubus
 
 The dungeon master's helper, for TinyArcade. [https://tinycircuits.com/].
-(in case you weren't a child of the 90's, "Hecubus" is a reference to this Kids in the Hall Skit [https://www.youtube.com/watch?v=rADdKqPNdaM]).
+(in case you weren't a child of the 90's, "Hecubus" is a reference to this Kids in the Hall skit [https://www.youtube.com/watch?v=rADdKqPNdaM]).
 
 ## Features
 
@@ -12,9 +12,9 @@ The dungeon master's helper, for TinyArcade. [https://tinycircuits.com/].
 
 ## TODO
 
--[ ] Sound for countdown.
--[ ] Run countdown while other pages focussed.
--[ ] Pause stopwatch.
+- [ ] Sound for countdown.
+- [ ] Run countdown while other pages focussed.
+- [ ] Pause stopwatch.
 
 ## Requirements
 
