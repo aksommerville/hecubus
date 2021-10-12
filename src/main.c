@@ -475,17 +475,122 @@ static void draw_countdown() {
 
 /* Stopwatch mode.
  ****************************************************************/
+ 
+#define SW_STAMP_LIMIT 4
+ 
+static uint32_t sw_starttime=0; // absolute ms, or zero if not running
+static uint16_t sw_elapsed=0; // BCD: 0xMMSS, for display only
+static uint32_t sw_stampv[SW_STAMP_LIMIT]; // BCD: 0x0MMSSmmm
+static uint8_t sw_stampc=0;
+
+static void sw_begin() {
+  sw_starttime=millis();
+  sw_stampc=0;
+  video_dirty=1;
+}
+
+static void sw_end() {
+  sw_starttime=0;
+  video_dirty=1;
+}
+
+static void sw_record_stamp() {
+  uint32_t ms=millis()-sw_starttime;
+  uint32_t stamp=
+    ((ms/600000)<<24)|
+    (((ms%600000)/60000)<<20)|
+    (((ms%60000)/10000)<<16)|
+    (((ms%10000)/1000)<<12)|
+    (((ms%1000)/100)<<8)|
+    (((ms%100)/10)<<4)|
+    (ms%10)|
+  0;
+  if (sw_stampc>=SW_STAMP_LIMIT) {
+    sw_stampc--;
+    uint8_t i=0;
+    for (;i<sw_stampc;i++) sw_stampv[i]=sw_stampv[i+1];
+  }
+  sw_stampv[sw_stampc++]=stamp;
+  video_dirty=1;
+}
+
+static void sw_clear() {
+  sw_starttime=0;
+  sw_elapsed=0;
+  sw_stampc=0;
+  video_dirty=1;
+}
 
 static void handle_input_stopwatch(uint8_t pressed,uint8_t aux) {
-//TODO
+  // Very easy inputwise! We don't care about (aux), and only use A and B.
+  if (pressed&TINYC_BUTTON_A) {
+    if (sw_starttime) sw_record_stamp();
+    else sw_begin();
+  }
+  if (pressed&TINYC_BUTTON_B) {
+    if (sw_starttime) sw_end();
+    else sw_clear();
+  }
 }
 
 static void stopwatch_update() {
-//TODO
+  if (!sw_starttime) return;
+  uint32_t ms=millis()-sw_starttime;
+  uint32_t s=ms/1000;
+  uint16_t stamp=
+    ((s/600)<<12)|
+    (((s%600)/60)<<8)|
+    (((s%60)/10)<<4)|
+    (s%10)
+  ;
+  if (stamp!=sw_elapsed) {
+    sw_elapsed=stamp;
+    video_dirty=1;
+  }
+}
+
+static void draw_stamp(uint32_t stamp,int8_t x,int8_t y) {
+  char text[9]={
+    '0'+((stamp>>24)&15),
+    '0'+((stamp>>20)&15),
+    ':',
+    '0'+((stamp>>16)&15),
+    '0'+((stamp>>12)&15),
+    '.',
+    '0'+((stamp>>8)&15),
+    '0'+((stamp>>4)&15),
+    '0'+(stamp&15),
+  };
+  softarcade_font_render(&image_fb,x,y,&font,text,sizeof(text),0x0b);
 }
 
 static void draw_stopwatch() {
-//TODO
+
+  if (sw_starttime) {
+    softarcade_fill_rect(&image_fb,0,11,96,53,0x20);
+  }
+  
+  int8_t x=30,y=27;
+  int8_t colw=fancydigitv[0].w;
+  dice_draw_digit(x,y,(sw_elapsed>>12)&15); x+=colw;
+  dice_draw_digit(x,y,(sw_elapsed>>8)&15); x+=colw;
+  softarcade_fill_rect(&image_fb,x,y+4,2,2,0xff);
+  softarcade_fill_rect(&image_fb,x,y+8,2,2,0xff);
+  x+=3;
+  dice_draw_digit(x,y,(sw_elapsed>>4)&15); x+=colw;
+  dice_draw_digit(x,y,sw_elapsed&15);
+  
+  y=46;
+  x=8;
+  int8_t i=0;
+  for (;i<sw_stampc;i++) {
+    draw_stamp(sw_stampv[i],x,y);
+    x+=48;
+    if (x>=96) {
+      x=8;
+      y+=8;
+    }
+  }
 }
 
 /* Statistics mode.

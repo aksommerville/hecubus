@@ -14,6 +14,7 @@ The dungeon master's helper, for TinyArcade. [https://tinycircuits.com/].
 
 -[ ] Sound for countdown.
 -[ ] Run countdown while other pages focussed.
+-[ ] Pause stopwatch.
 
 ## Requirements
 
