@@ -676,7 +676,8 @@ static void st_load() {
   char src[ST_STORAGE_LIMIT];
   int32_t srcc=tinyc_file_read(src,sizeof(src),ST_SAVE_PATH);
   if ((srcc>0)&&(srcc<=sizeof(src))) {
-    uint8_t srcp=0,col=0,row=0;
+    uint16_t srcp=0;
+    uint8_t col=0,row=0;
     while (srcp<srcc) {
     
       const char *content=src+srcp;
@@ -706,7 +707,7 @@ static void st_load() {
 
 static void st_save() {
   char src[ST_STORAGE_LIMIT];
-  uint8_t srcc=0;
+  uint16_t srcc=0;
   const struct st_cell *cell=st_cellv;
   int8_t yi=ST_ROWC;
   for (;yi-->0;) {
