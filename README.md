@@ -12,7 +12,7 @@ The dungeon master's helper, for TinyArcade. [https://tinycircuits.com/].
 
 ## TODO
 
-- [ ] Sound for countdown.
+- [x] Sound for countdown.
 - [ ] Run countdown while other pages focussed.
 - [ ] Pause stopwatch.
 
