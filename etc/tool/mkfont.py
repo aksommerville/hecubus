@@ -81,5 +81,5 @@ for ch in xrange(0x20,0x80):
   
 sys.stdout.write("static struct softarcade_font MYFONT={\n")
 sys.stdout.write("  .metrics={%s},\n"%(','.join(map(str,metrics)),))
-sys.stdout.write("  .bits={%s},\n"%(','.join(map(str,bits)),))
+sys.stdout.write("  .bits={%s},\n"%(','.join(map(lambda n:"0x%x"%(n,),bits)),))
 sys.stdout.write("};\n")

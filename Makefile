@@ -8,7 +8,11 @@ PORT:=ttyACM0
 IDEROOT:=/opt/arduino-1.8.16
 
 # Empty, or a directory immediately under src, to build also for a non-TinyArcade platform.
-NATIVE_PLATFORM:=linux-glx
+ifeq ($(shell uname -n),raspberrypi)
+  NATIVE_PLATFORM:=raspi
+else
+  NATIVE_PLATFORM:=linux-glx
+endif
 
 # Likely constant, for Linux users.
 BUILDER:=$(IDEROOT)/arduino-builder
