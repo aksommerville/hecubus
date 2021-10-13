@@ -9,6 +9,8 @@
  *************************************************************/
 
 #if SOFTARCADE_AUDIO_ENABLE
+//XXX Sorry for being so mysterious... Softarcade's synthesizer is not in play here.
+// We're doing a much simpler audio regime, see a bit below.
 
 struct softarcade_synth synth={0};
 
@@ -25,7 +27,47 @@ static uint16_t get_pcm(void *pcmpp,uint8_t waveid,void *userdata) {
 }
 
 #else
-int16_t tinyc_client_update_synthesizer() { return 0; }
+
+static uint16_t auphase=0;
+static uint16_t auhalfperiod=30;
+static uint16_t autonerate=10000;
+static uint16_t autonetime=10000;
+static int16_t aulevel=0;
+static uint16_t auramprate=40;
+static uint16_t auramptime=40;
+
+int16_t tinyc_client_update_synthesizer() {
+
+  if (++auphase>=auhalfperiod) {
+    auphase=0;
+    aulevel=-aulevel;
+  }
+  
+  if (auramptime) auramptime--;
+  else {
+    auramptime=auramprate;
+    if (aulevel>0) aulevel--;
+    else if (aulevel<0) aulevel++;
+  }
+  
+  if (autonetime) autonetime--;
+  else {
+    autonetime=autonerate;
+    if (auhalfperiod==40) auhalfperiod=30;
+    else auhalfperiod=40;
+  }
+  
+  return aulevel;
+}
+
+static void beep() {
+  aulevel=3000;
+  auhalfperiod=30;
+  auphase=0;
+  autonetime=autonerate;
+  auramptime=auramprate;
+}
+
 #endif
 
 /* Video.
@@ -417,7 +459,7 @@ static void handle_input_countdown(uint8_t pressed,uint8_t aux) {
 }
 
 static void countdown_expire() {
-  //TODO sound effects
+  beep();
   cd_end_time=0;
   cd_alert_time=CD_ALERT_TIME;
   video_dirty=1;

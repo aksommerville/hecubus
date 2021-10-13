@@ -77,7 +77,7 @@ static int rb_glx_startup(struct rb_video *video) {
   
   XFree(vi);
   
-  XStoreName(VIDEO->dpy,VIDEO->win,"Hecubus");
+  XStoreName(VIDEO->dpy,VIDEO->win,APPNAME);
   
   if (video->delegate.fullscreen) {
     XChangeProperty(

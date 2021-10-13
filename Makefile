@@ -103,7 +103,7 @@ EXE:=$(OUTDIR)/$(PROJECT_NAME)
 CMD_PRERUN:=
 CMD_POSTRUN:=
 
-CC:=gcc -c -MMD -O2 -Isrc -Werror -Wimplicit -DTINYC_NON_TINY=1
+CC:=gcc -c -MMD -O2 -Isrc -Werror -Wimplicit -DTINYC_NON_TINY=1 -DAPPNAME=\"$(PROJECT_NAME)\"
 LD:=gcc
 LDPOST:=
 
