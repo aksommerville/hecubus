@@ -185,6 +185,7 @@ static struct softarcade_font font={
 static uint8_t video_dirty=1;
 static uint8_t mode_select=0; // 0..3 = dice,timer,stopwatch,stats
 static uint8_t focus_mode_select=1; // nonzero means cursor in header bar
+static uint8_t seeded=0; // defer srand() until the first input
 
 /* Dice mode.
  ***************************************************************/
@@ -1097,6 +1098,11 @@ static void draw_statistics() {
 static uint8_t pvinput=0;
 
 static void handle_input(uint8_t pressed) {
+  if (!pressed) return;
+  if (!seeded) {
+    srand(millis());
+    seeded=1;
+  }
 
   // When mode select is focused, it monopolizes LEFT/RIGHT and forwards other keys.
   uint8_t aux=0;
